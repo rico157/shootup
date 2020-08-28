@@ -4,6 +4,9 @@ export default class Paddle {
     this.width = 150;
     this.height = 30;
 
+    // Speed
+    this.maxSpeed = 10;
+    this.speed = 0;
     // Set x, y positions
     this.position = {
       x: gameWidth / 2 - this.width / 2,
@@ -12,6 +15,9 @@ export default class Paddle {
   }
 
   // Methods
+  moveLeft() {
+    this.speed = -this.maxSpeed;
+  }
   // Pass the context to the draw method
   draw(ctx) {
     ctx.fillStyle = "0ff";
@@ -19,6 +25,6 @@ export default class Paddle {
   }
   update(deltaTime) {
     if (!deltaTime) return;
-    this.position.x += 5 / deltaTime;
+    this.position.x += this.speed;
   }
 }

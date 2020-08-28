@@ -1,4 +1,5 @@
-import Paddle from "./class.js";
+import InputHandler from "./input.js";
+import Paddle from "./paddle";
 // Get the canvas from id
 let canvas = document.getElementById("gameScreen");
 // Create the context
@@ -11,11 +12,12 @@ const GAME_HEIGHT = 600;
 // New instance of paddle
 let paddle = new Paddle(GAME_WITDTH, GAME_HEIGHT);
 // Invoke draw method passing the content as argument
-paddle.draw(ctx);
+
+new InputHandler(paddle);
 
 // Updated in gameLoop
 let lastTime = 0;
-//                  pass the timeStamp
+//            pass the timeStamp
 function gameLoop(timeStamp) {
   // dt --> time less time of last frame
   let deltaTime = timeStamp - lastTime;
