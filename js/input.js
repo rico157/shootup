@@ -1,5 +1,4 @@
-import Paddle from "./paddle";
-
+import Paddle from "./paddle.js";
 export default class InputHandler {
   constructor(paddle) {
     // Listen to keydown
@@ -11,7 +10,7 @@ export default class InputHandler {
           break;
         // Move right
         case 39:
-          alert("move right");
+          paddle.moveRight();
           break;
       }
     });

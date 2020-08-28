@@ -1,5 +1,5 @@
 import InputHandler from "./input.js";
-import Paddle from "./paddle";
+import Paddle from "./paddle.js";
 // Get the canvas from id
 let canvas = document.getElementById("gameScreen");
 // Create the context
