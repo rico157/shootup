@@ -2,4 +2,4 @@
 
 ## Tutorial from freeCodeCamp
 
-[Link to the youtube video ](https://youtu.be/3EMxBkqC4z0)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/3EMxBkqC4z0/0.jpg)](https://www.youtube.com/watch?v=3EMxBkqC4z0)
