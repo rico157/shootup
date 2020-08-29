@@ -44,8 +44,14 @@ export default class Ball {
     // Collision with paddle
     let bottomOfBall = this.position.y + this.size;
     let paddle = this.game.paddle.position.y;
+    let rightSidePaddle = this.game.paddle.position.x + this.game.paddle.width;
+    let leftSidePaddle = this.game.paddle.position.x;
 
-    if (bottomOfBall >= paddle) {
+    if (
+      bottomOfBall >= paddle &&
+      this.position.x >= leftSidePaddle &&
+      this.position.x + this.size <= rightSidePaddle
+    ) {
       this.speed.y = -this.speed.y;
       this.position.y = this.game.paddle.position.y - this.size;
     }
