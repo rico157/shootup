@@ -28,7 +28,7 @@ export default class Paddle {
   }
   // Pass the context to the draw method
   draw(ctx) {
-    ctx.fillStyle = "0ff";
+    ctx.fillStyle = "#FF0000";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
   update(deltaTime) {
