@@ -10,6 +10,16 @@
       img {
         display: none;
       }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Helvetica;
+      }
+      div {
+        flex-direction: row;
+        margin-top: 70px;
+      }
       #rightButton {
         margin-left: 500px;
       }
@@ -21,11 +31,17 @@
     <img id="img_brick" src="assets/images/brick.png" />
     <canvas id="gameScreen" width="800" height="600"></canvas>
     <script src="./js/index.js" type="module"></script>
-    <button style="width: 150px; height: 150px" id="leftButton" type="button">
-      LEFT
-    </button>
-    <button style="width: 150px; height: 150px" id="rightButton" type="button">
-      RIGHT
-    </button>
+    <div>
+      <button style="width: 150px; height: 150px" id="leftButton" type="button">
+        LEFT
+      </button>
+      <button
+        style="width: 150px; height: 150px"
+        id="rightButton"
+        type="button"
+      >
+        RIGHT
+      </button>
+    </div>
   </body>
 </html>

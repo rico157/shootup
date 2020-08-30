@@ -4,16 +4,16 @@ export default class InputHandler {
   constructor(paddle, game) {
     let leftButton = document.getElementById("leftButton");
     let rightButton = document.getElementById("rightButton");
-    leftButton.addEventListener("mousedown", () => {
+    leftButton.addEventListener("touchstart", () => {
       paddle.moveLeft();
     });
-    leftButton.addEventListener("mouseup", () => {
+    leftButton.addEventListener("touchend", () => {
       if (paddle.speed < 0) paddle.stop();
     });
-    rightButton.addEventListener("mousedown", () => {
+    rightButton.addEventListener("touchstart", () => {
       paddle.moveRight();
     });
-    rightButton.addEventListener("mouseup", () => {
+    rightButton.addEventListener("touchend", () => {
       if (paddle.speed > 0) paddle.stop();
     });
 
