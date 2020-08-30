@@ -15,10 +15,13 @@
         flex-direction: column;
         align-items: center;
         font-family: Helvetica;
+
+        /* touch-action: none; */
       }
       div {
         flex-direction: row;
         margin-top: 70px;
+        touch-action: manipulation;
       }
       #rightButton {
         margin-left: 300px;
@@ -32,16 +35,16 @@
     <canvas id="gameScreen" width="600" height="600"></canvas>
     <script src="./js/index.js" type="module"></script>
     <div>
-      <button style="width: 150px; height: 150px" id="leftButton" type="button">
-        LEFT
-      </button>
+      <button
+        style="width: 150px; height: 150px"
+        id="leftButton"
+        type="button"
+      ></button>
       <button
         style="width: 150px; height: 150px"
         id="rightButton"
         type="button"
-      >
-        RIGHT
-      </button>
+      ></button>
     </div>
   </body>
 </html>

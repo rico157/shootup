@@ -2,6 +2,13 @@ import Paddle from "./paddle.js";
 import Game from "./game.js";
 export default class InputHandler {
   constructor(paddle, game) {
+    document.addEventListener(
+      "touchstart",
+      function (e) {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
     let leftButton = document.getElementById("leftButton");
     let rightButton = document.getElementById("rightButton");
     // Touch
