@@ -10,6 +10,9 @@
       img {
         display: none;
       }
+      #rightButton {
+        margin-left: 500px;
+      }
     </style>
   </head>
 
@@ -17,16 +20,12 @@
     <img id="img_ball" src="assets/images/ball.png" />
     <img id="img_brick" src="assets/images/brick.png" />
     <canvas id="gameScreen" width="800" height="600"></canvas>
-    <h2>Press <- or -> to move</h2>
     <script src="./js/index.js" type="module"></script>
-    <h2>Tutorial from:</h2>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/3EMxBkqC4z0"
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+    <button style="width: 150px; height: 150px" id="leftButton" type="button">
+      LEFT
+    </button>
+    <button style="width: 150px; height: 150px" id="rightButton" type="button">
+      RIGHT
+    </button>
   </body>
 </html>

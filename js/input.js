@@ -2,6 +2,21 @@ import Paddle from "./paddle.js";
 import Game from "./game.js";
 export default class InputHandler {
   constructor(paddle, game) {
+    let leftButton = document.getElementById("leftButton");
+    let rightButton = document.getElementById("rightButton");
+    leftButton.addEventListener("mousedown", () => {
+      paddle.moveLeft();
+    });
+    leftButton.addEventListener("mouseup", () => {
+      if (paddle.speed < 0) paddle.stop();
+    });
+    rightButton.addEventListener("mousedown", () => {
+      paddle.moveRight();
+    });
+    rightButton.addEventListener("mouseup", () => {
+      if (paddle.speed > 0) paddle.stop();
+    });
+
     // Listen to keydown
     document.addEventListener("keydown", (event) => {
       switch (event.keyCode) {
