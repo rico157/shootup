@@ -5,7 +5,7 @@ let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
 
 // Default WIDTH and HEIGHT
-const GAME_WITDTH = 800;
+const GAME_WITDTH = 600;
 const GAME_HEIGHT = 600;
 
 let game = new Game(GAME_WITDTH, GAME_HEIGHT);
