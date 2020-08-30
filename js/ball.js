@@ -12,12 +12,12 @@ export default class Ball {
     this.size = 20;
 
     this.position = {
-      x: 200,
-      y: 200,
+      x: 300,
+      y: 500,
     };
     this.speed = {
       x: 8,
-      y: 3,
+      y: -3,
     };
   }
 
