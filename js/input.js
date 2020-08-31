@@ -9,6 +9,17 @@ export default class InputHandler {
       },
       { passive: false }
     );
+
+    document.getElementById("pauseButton").addEventListener("mousedown", () => {
+      game.togglePause();
+    });
+    document
+      .getElementById("pauseButton")
+      .addEventListener("touchstart", () => {
+        game.togglePause();
+      });
+
+    // LEFT RIGHT BUTTONS
     let leftButton = document.getElementById("leftButton");
     let rightButton = document.getElementById("rightButton");
     // Touch
@@ -37,6 +48,7 @@ export default class InputHandler {
     rightButton.addEventListener("mouseup", () => {
       if (paddle.speed > 0) paddle.stop();
     });
+    // LEFT RIGHT BUTTONS
 
     // Listen to keydown
     document.addEventListener("keydown", (event) => {

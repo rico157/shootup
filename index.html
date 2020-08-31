@@ -18,12 +18,23 @@
         /* width: 100%; */
         /* touch-action: none; */
       }
-      div {
+      #div1 {
+        display: flex;
+
         flex-direction: row;
         margin-top: 70px;
       }
+      #div2 {
+        display: flex;
+
+        flex-direction: column;
+        margin-left: 75px;
+      }
+      #pauseButton {
+        margin-top: 50px;
+      }
       #rightButton {
-        margin-left: 300px;
+        margin-left: 75px;
       }
     </style>
   </head>
@@ -33,10 +44,26 @@
     <img id="img_brick" src="assets/images/brick.png" />
     <canvas id="gameScreen" width="600" height="600"></canvas>
     <script src="./js/index.js" type="module"></script>
-    <div>
+    <div id="div1">
       <button style="width: 150px; height: 150px" id="leftButton" type="button">
         LEFT
       </button>
+      <div id="div2">
+        <button
+          style="width: 150px; height: 50px"
+          id="startButton"
+          type="button"
+        >
+          START
+        </button>
+        <button
+          style="width: 150px; height: 50px"
+          id="pauseButton"
+          type="button"
+        >
+          PAUSE
+        </button>
+      </div>
       <button
         style="width: 150px; height: 150px"
         id="rightButton"
