@@ -27,6 +27,7 @@ export default class Game {
 
   // Methods
   start() {
+    if (this.gamestate === GAMESTATE.PAUSED) this.gamestate = GAMESTATE.MENU;
     if (this.gamestate !== GAMESTATE.MENU) return;
 
     let bricks = buildLevel(this, level1);
