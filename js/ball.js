@@ -11,6 +11,9 @@ export default class Ball {
 
     this.size = 20;
 
+    this.reset();
+  }
+  reset() {
     this.position = {
       x: 300,
       y: 500,
@@ -20,7 +23,6 @@ export default class Ball {
       y: -3,
     };
   }
-
   // Methods
   update(deltaTime) {
     this.position.x += this.speed.x;
@@ -31,8 +33,12 @@ export default class Ball {
       this.speed.x = -this.speed.x;
     }
     // Collision with top and bottom walls
-    if (this.position.y > this.gameHeight - this.size || this.position.y < 0) {
+    if (this.position.y < 0) {
       this.speed.y = -this.speed.y;
+    }
+    if (this.position.y > this.gameHeight - this.size) {
+      this.game.lives--;
+      this.reset();
     }
     if (detectCollision(this, this.game.paddle)) {
       this.speed.y = -this.speed.y;
