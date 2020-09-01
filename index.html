@@ -3,6 +3,11 @@
   <head>
     <title>JS-Game</title>
     <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+
     <style>
       #gameScreen {
         border: 1px solid black;
@@ -15,26 +20,29 @@
         flex-direction: column;
         align-items: center;
         font-family: Helvetica;
-        /* width: 100%; */
+        width: 100%;
         /* touch-action: none; */
       }
       #div1 {
         display: flex;
 
         flex-direction: row;
-        margin-top: 70px;
+        margin-top: 30px;
       }
       #div2 {
         display: flex;
 
         flex-direction: column;
-        margin-left: 75px;
+        margin-left: 10px;
+      }
+      #startButton {
+        margin-top: 10px;
       }
       #pauseButton {
-        margin-top: 50px;
+        margin-top: 25px;
       }
       #rightButton {
-        margin-left: 75px;
+        margin-left: 10px;
       }
     </style>
   </head>
@@ -45,19 +53,24 @@
     <canvas id="gameScreen" width="600" height="600"></canvas>
     <script src="./js/index.js" type="module"></script>
     <div id="div1">
-      <button style="width: 150px; height: 150px" id="leftButton" type="button">
+      <button
+        class="button-primary"
+        style="width: 215px; height: 250px"
+        id="leftButton"
+        type="button"
+      >
         LEFT
       </button>
       <div id="div2">
         <button
-          style="width: 150px; height: 50px"
+          style="width: 150px; height: 100px"
           id="startButton"
           type="button"
         >
           START
         </button>
         <button
-          style="width: 150px; height: 50px"
+          style="width: 150px; height: 100px"
           id="pauseButton"
           type="button"
         >
@@ -65,7 +78,8 @@
         </button>
       </div>
       <button
-        style="width: 150px; height: 150px"
+        class="button-primary"
+        style="width: 215px; height: 250px"
         id="rightButton"
         type="button"
       >
