@@ -18,6 +18,14 @@ export default class InputHandler {
       .addEventListener("touchstart", () => {
         game.togglePause();
       });
+    document.getElementById("startButton").addEventListener("mousedown", () => {
+      game.start();
+    });
+    document
+      .getElementById("startButton")
+      .addEventListener("touchstart", () => {
+        game.start();
+      });
 
     // LEFT RIGHT BUTTONS
     let leftButton = document.getElementById("leftButton");

@@ -15,24 +15,33 @@ export default class Game {
   constructor(gameWidth, gameHeight) {
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
+    this.gamestate = GAMESTATE.MENU;
+
+    this.gameObjects = [];
+    // New instances
+    this.ball = new Ball(this);
+    this.paddle = new Paddle(this);
+
+    new InputHandler(this.paddle, this);
   }
 
   // Methods
   start() {
-    this.gamestate = GAMESTATE.RUNNING;
-    // New instances
-    this.ball = new Ball(this);
-    this.paddle = new Paddle(this);
+    if (this.gamestate !== GAMESTATE.MENU) return;
 
     let bricks = buildLevel(this, level1);
 
     this.gameObjects = [this.ball, this.paddle, ...bricks];
 
-    new InputHandler(this.paddle, this);
+    this.gamestate = GAMESTATE.RUNNING;
   }
 
   update(deltaTime) {
-    if (this.gamestate === GAMESTATE.PAUSED) return;
+    if (
+      this.gamestate === GAMESTATE.PAUSED ||
+      this.gamestate === GAMESTATE.MENU
+    )
+      return;
     // Call update for each object
     this.gameObjects.forEach((object) => object.update(deltaTime));
     // Filter the not marked for deletion
@@ -54,6 +63,17 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
+    }
+
+    if (this.gamestate === GAMESTATE.MENU) {
+      ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+      ctx.fillStyle = "rgba(0,0,0,1";
+      ctx.fill();
+
+      ctx.font = "30px Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText("Press START", this.gameWidth / 2, this.gameHeight / 2);
     }
   }
 
