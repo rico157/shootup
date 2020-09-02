@@ -9,6 +9,7 @@ const GAME_WITDTH = 600;
 const GAME_HEIGHT = 600;
 
 let game = new Game(GAME_WITDTH, GAME_HEIGHT);
+game.start();
 
 // Updated in gameLoop
 let lastTime = 0;

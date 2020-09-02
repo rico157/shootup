@@ -1,7 +1,7 @@
-import Paddle from "./paddle.js";
+import Ship from "./ship.js";
 import Game from "./game.js";
 export default class InputHandler {
-  constructor(paddle, game) {
+  constructor(ship, game) {
     document.addEventListener(
       "touchstart",
       function (e) {
@@ -32,29 +32,29 @@ export default class InputHandler {
     let rightButton = document.getElementById("rightButton");
     // Touch
     leftButton.addEventListener("touchstart", () => {
-      paddle.moveLeft();
+      ship.moveLeft();
     });
     leftButton.addEventListener("touchend", () => {
-      if (paddle.speed < 0) paddle.stop();
+      if (ship.speed < 0) ship.stop();
     });
     rightButton.addEventListener("touchstart", () => {
-      paddle.moveRight();
+      ship.moveRight();
     });
     rightButton.addEventListener("touchend", () => {
-      if (paddle.speed > 0) paddle.stop();
+      if (ship.speed > 0) ship.stop();
     });
     // Mouse
     leftButton.addEventListener("mousedown", () => {
-      paddle.moveLeft();
+      ship.moveLeft();
     });
     leftButton.addEventListener("mouseup", () => {
-      if (paddle.speed < 0) paddle.stop();
+      if (ship.speed < 0) ship.stop();
     });
     rightButton.addEventListener("mousedown", () => {
-      paddle.moveRight();
+      ship.moveRight();
     });
     rightButton.addEventListener("mouseup", () => {
-      if (paddle.speed > 0) paddle.stop();
+      if (ship.speed > 0) ship.stop();
     });
     // LEFT RIGHT BUTTONS
 
@@ -63,11 +63,11 @@ export default class InputHandler {
       switch (event.keyCode) {
         // Move left
         case 37:
-          paddle.moveLeft();
+          ship.moveLeft();
           break;
         // Move right
         case 39:
-          paddle.moveRight();
+          ship.moveRight();
           break;
       }
     });
@@ -75,15 +75,15 @@ export default class InputHandler {
       switch (event.keyCode) {
         // Move left
         case 37:
-          if (paddle.speed < 0) paddle.stop();
+          if (ship.speed < 0) ship.stop();
           break;
         // Move right
         case 39:
-          if (paddle.speed > 0) paddle.stop();
+          if (ship.speed > 0) ship.stop();
           break;
         // Pause
-        case 27:
-          game.togglePause();
+        case 32:
+          ship.shoot();
           break;
       }
     });

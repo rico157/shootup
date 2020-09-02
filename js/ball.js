@@ -41,7 +41,7 @@ export default class Ball {
       this.reset();
       this.game.togglePause();
     }
-    if (detectCollision(this, this.game.paddle)) {
+    if (detectCollision(this, this.game.ship)) {
       this.speed.y = -this.speed.y;
       this.position.y = this.position.y - this.size;
     }

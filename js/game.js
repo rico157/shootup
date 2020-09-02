@@ -1,7 +1,8 @@
 import InputHandler from "./input.js";
-import Paddle from "./paddle.js";
+import Ship from "./ship.js";
 import Ball from "./ball.js";
 import Brick from "./brick.js";
+import Bullet from "./bullet.js";
 import { buildLevel, level1 } from "./levels.js";
 
 const GAMESTATE = {
@@ -16,13 +17,14 @@ export default class Game {
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
     this.gamestate = GAMESTATE.MENU;
-
     this.gameObjects = [];
     // New instances
-    this.ball = new Ball(this);
-    this.paddle = new Paddle(this);
+    // this.ball = new Ball(this);
+    this.ship = new Ship(this);
+    this.bullet = new Bullet(this.ship);
+    // this.bullet = new Bullet(this.ship);
     this.lives = 3;
-    new InputHandler(this.paddle, this);
+    new InputHandler(this.ship, this);
   }
 
   // Methods
@@ -32,7 +34,7 @@ export default class Game {
 
     let bricks = buildLevel(this, level1);
 
-    this.gameObjects = [this.ball, this.paddle, ...bricks];
+    this.gameObjects = [/*this.ball,*/ this.ship, ...bricks];
 
     this.gamestate = GAMESTATE.RUNNING;
   }
