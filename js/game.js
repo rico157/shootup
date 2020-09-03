@@ -21,7 +21,7 @@ export default class Game {
     // New instances
     // this.ball = new Ball(this);
     this.ship = new Ship(this);
-    this.bullet = new Bullet(this.ship);
+    this.bullets = [];
     // this.bullet = new Bullet(this.ship);
     this.lives = 3;
     new InputHandler(this.ship, this);
@@ -57,6 +57,8 @@ export default class Game {
   }
 
   draw(ctx) {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 600, 600);
     ctx.font = "30px Arial";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";

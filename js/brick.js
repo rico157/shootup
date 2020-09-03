@@ -17,9 +17,13 @@ export default class Brick {
 
   // Methods
   update() {
-    if (detectCollision(this.game.bullet, this)) {
-      this.game.ball.speed.y = -this.game.ball.speed.y;
-      this.markForDeletion = true;
+    for (let i = 0; i < this.game.bullets.length; i++) {
+      if (detectCollision(this.game.bullets[i], this)) {
+        // this.game.ball.speed.y = -this.game.ball.speed.y;
+        this.game.bullets[i].y = 1000;
+        this.game.bullets[i].speed = 0;
+        this.markForDeletion = true;
+      }
     }
   }
   draw(ctx) {

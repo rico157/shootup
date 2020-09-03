@@ -1,15 +1,12 @@
 import Bullet from "./bullet.js";
 export default class Ship {
-  // Set parameters for gameW and gameH
   constructor(game) {
     this.image = document.getElementById("img_ship");
 
     this.gameWidth = game.gameWidth;
     this.game = game;
-
     // this.size = 150;
     // this.height = 30;
-    // this.bullet = game.bullet;
     // Speed
     this.maxSpeed = 7;
     this.speed = 0;
@@ -19,11 +16,14 @@ export default class Ship {
       x: game.gameWidth / 2 - this.size / 2,
       y: game.gameHeight - this.size - 35,
     };
+    this.bullet = new Bullet(this);
   }
 
   // Methods
   shoot() {
-    this.game.gameObjects.push(this.game.bullet);
+    this.bullet = new Bullet(this);
+    this.game.gameObjects.push(this.bullet);
+    this.game.bullets.push(this.bullet);
     console.log("shoot");
     //
   }
