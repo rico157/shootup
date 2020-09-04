@@ -2,9 +2,9 @@ import { detectCollision } from "./collisionDetection.js";
 
 export default class Brick {
   constructor(game, position) {
-    this.image = document.getElementById("img_brick");
-    this.width = 40;
-    this.height = 40;
+    this.image = document.getElementById("img_whale");
+    this.width = 60;
+    this.height = 60;
 
     this.game = game;
 
@@ -16,17 +16,7 @@ export default class Brick {
   }
 
   // Methods
-  update() {
-    for (let i = 0; i < this.game.bullets.length; i++) {
-      if (detectCollision(this.game.bullets[i], this)) {
-        // this.game.ball.speed.y = -this.game.ball.speed.y;
-        this.game.bullets[i].y = 1000;
-        this.game.bullets[i].speed = 0;
-        this.game.bullets.splice(i, 1);
-        this.markForDeletion = true;
-      }
-    }
-  }
+
   draw(ctx) {
     ctx.drawImage(
       this.image,
@@ -35,5 +25,17 @@ export default class Brick {
       this.width,
       this.height
     );
+  }
+  update() {
+    this.position.y += 2;
+
+    for (let i = 0; i < this.game.bullets.length; i++) {
+      if (detectCollision(this.game.bullets[i], this)) {
+        this.game.bullets[i].y = 1000;
+        this.game.bullets[i].speed = 0;
+        this.game.bullets.splice(i, 1);
+        this.markForDeletion = true;
+      }
+    }
   }
 }

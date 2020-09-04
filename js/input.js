@@ -3,80 +3,76 @@ import Game from "./game.js";
 export default class InputHandler {
   constructor(ship, game) {
     //Audio
-    const shootSound = document.getElementById("shootSound");
+    this.shootSound = document.getElementById("shootSound");
+    shootSound.volume = 0.2;
 
-    //Controls
-    document.addEventListener(
-      "touchstart",
-      function (e) {
-        e.preventDefault();
-      },
-      { passive: false }
-    );
+    this.button = {
+      pauseButton: document.getElementById("pauseButton"),
+      startButton: document.getElementById("startButton"),
+      leftButton: document.getElementById("leftButton"),
+      rightButton: document.getElementById("rightButton"),
+    };
 
-    document.getElementById("pauseButton").addEventListener("mousedown", () => {
+    // <--- On Screen Controls --->
+
+    // ### Touch ###
+    this.button.pauseButton.addEventListener("touchstart", () => {
       game.togglePause();
+      game.bgmusic.pause();
     });
-    document
-      .getElementById("pauseButton")
-      .addEventListener("touchstart", () => {
-        game.togglePause();
-      });
-    document.getElementById("startButton").addEventListener("mousedown", () => {
+    this.button.startButton.addEventListener("touchstart", () => {
       game.start();
+      ship.shoot();
     });
-    document
-      .getElementById("startButton")
-      .addEventListener("touchstart", () => {
-        game.start();
-        ship.shoot();
-      });
-
-    // LEFT RIGHT BUTTONS
-    let leftButton = document.getElementById("leftButton");
-    let rightButton = document.getElementById("rightButton");
-    // Touch
-    leftButton.addEventListener("touchstart", () => {
+    this.button.leftButton.addEventListener("touchstart", () => {
       ship.moveLeft();
     });
-    leftButton.addEventListener("touchend", () => {
+    this.button.leftButton.addEventListener("touchend", () => {
       if (ship.speed < 0) ship.stop();
     });
-    rightButton.addEventListener("touchstart", () => {
+    this.button.rightButton.addEventListener("touchstart", () => {
       ship.moveRight();
     });
-    rightButton.addEventListener("touchend", () => {
+    this.button.rightButton.addEventListener("touchend", () => {
       if (ship.speed > 0) ship.stop();
     });
-    // Mouse
-    leftButton.addEventListener("mousedown", () => {
+
+    // ### Mouse ###
+    this.button.pauseButton.addEventListener("mousedown", () => {
+      game.togglePause();
+      game.bgmusic.pause();
+    });
+    this.button.startButton.addEventListener("mousedown", () => {
+      game.start();
+      ship.shoot();
+    });
+    this.button.leftButton.addEventListener("mousedown", () => {
       ship.moveLeft();
     });
-    leftButton.addEventListener("mouseup", () => {
+    this.button.leftButton.addEventListener("mouseup", () => {
       if (ship.speed < 0) ship.stop();
     });
-    rightButton.addEventListener("mousedown", () => {
+    this.button.rightButton.addEventListener("mousedown", () => {
       ship.moveRight();
     });
-    rightButton.addEventListener("mouseup", () => {
+    this.button.rightButton.addEventListener("mouseup", () => {
       if (ship.speed > 0) ship.stop();
     });
-    // LEFT RIGHT BUTTONS
 
-    // Listen to keydown
+    // <--- Keys Controls --->
+
+    // ### Keyboard ###
     document.addEventListener("keydown", (event) => {
       switch (event.keyCode) {
-        // Move left
         case 37:
           ship.moveLeft();
           break;
-        // Move right
         case 39:
           ship.moveRight();
           break;
         case 32:
           ship.shoot();
-
+          game.start();
           break;
       }
     });
@@ -91,7 +87,7 @@ export default class InputHandler {
           if (ship.speed > 0) ship.stop();
           break;
         // Pause
-        case 32:
+        case 27:
           break;
       }
     });

@@ -49,17 +49,18 @@
   </head>
 
   <body style="background-color: black">
-    <audio loop="true" autoplay="true" src="sound/bgmusic.mp3">
+    <audio loop="true" id="bgmusic" src="assets/sound/bgmusic.mp3">
       Your browser does not support the
       <code>audio</code> element.
     </audio>
-    <audio id="shootSound" src="sound/sh.mp3">
+    <audio id="shootSound" src="assets/sound/sh.mp3">
       Your browser does not support the
       <code>audio</code> element.
     </audio>
 
     <img id="img_ball" src="assets/images/ball.png" />
     <img id="img_brick" src="assets/images/brick.png" />
+    <img id="img_whale" src="assets/images/1.png" />
     <img id="img_ship" src="assets/images/ship.png" />
     <canvas id="gameScreen" width="600" height="600"></canvas>
     <script src="./js/index.js" type="module"></script>

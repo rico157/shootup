@@ -19,7 +19,7 @@ export default class Ship {
     this.size = 60;
     this.position = {
       x: game.gameWidth / 2 - this.size / 2,
-      y: game.gameHeight - this.size - 35,
+      y: game.gameHeight - this.size - 10,
     };
     this.bullet = new Bullet(this);
     this.been = true;

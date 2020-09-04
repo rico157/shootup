@@ -23,11 +23,16 @@ export default class Game {
 
     new InputHandler(this.ship, this);
     this.lives = 3;
+
+    this.bgmusic = document.getElementById("bgmusic");
   }
 
   // Methods
   start() {
-    if (this.gamestate === GAMESTATE.PAUSED) this.gamestate = GAMESTATE.MENU;
+    this.bgmusic.volume = 0.2;
+    this.bgmusic.play();
+    this.bgmusic.loop = true;
+    if (this.gamestate === GAMESTATE.PAUSED) this.gamestate = GAMESTATE.RUNNING;
     if (this.gamestate !== GAMESTATE.MENU) return;
 
     let bricks = buildLevel(this, level1);
@@ -49,17 +54,19 @@ export default class Game {
     // Call update for each object
     this.gameObjects.forEach((object) => object.update(deltaTime));
     // Filter the not marked for deletion
-    // this.gameObjects = this.gameObjects.filter(
-    //   (object) => !object.markForDeletion
-    // );
+    this.gameObjects = this.gameObjects.filter(
+      (object) => !object.markForDeletion
+    );
 
-    this.gameObjects.forEach((object) => {
-      if (object.markForDeletion) {
-        object.width -= 20;
-        object.height -= 20;
-        object.markForDeletion = false;
-      }
-    });
+    // this.gameObjects.forEach((object) => {
+    //   if (object.markForDeletion) {
+    //     object.width -= 10;
+    //     object.height -= 10;
+    //     object.position.x += 5;
+    //     object.position.y += 5;
+    //     object.markForDeletion = false;
+    //   }
+    // });
   }
 
   draw(ctx) {
@@ -108,10 +115,10 @@ export default class Game {
   }
 
   togglePause() {
-    if (this.gamestate === GAMESTATE.PAUSED) {
-      this.gamestate = GAMESTATE.RUNNING;
-    } else {
-      this.gamestate = GAMESTATE.PAUSED;
-    }
+    // if (this.gamestate === GAMESTATE.PAUSED) {
+    //   this.gamestate = GAMESTATE.RUNNING;
+    // } else {
+    this.gamestate = GAMESTATE.PAUSED;
+    // }
   }
 }
