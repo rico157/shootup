@@ -3,8 +3,6 @@ import Game from "./game.js";
 let canvas = document.getElementById("gameScreen");
 // Create the context
 let ctx = canvas.getContext("2d");
-ctx.fillStyle = "blue";
-ctx.fillRect(0, 0, 600, 600);
 
 // Default WIDTH and HEIGHT
 const GAME_WITDTH = 600;

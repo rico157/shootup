@@ -1,6 +1,5 @@
 import InputHandler from "./input.js";
 import Ship from "./ship.js";
-import Ball from "./ball.js";
 import Brick from "./brick.js";
 import Bullet from "./bullet.js";
 import { buildLevel, level1 } from "./levels.js";
@@ -19,12 +18,11 @@ export default class Game {
     this.gamestate = GAMESTATE.MENU;
     this.gameObjects = [];
     // New instances
-    // this.ball = new Ball(this);
     this.ship = new Ship(this);
     this.bullets = [];
-    // this.bullet = new Bullet(this.ship);
-    this.lives = 3;
+
     new InputHandler(this.ship, this);
+    this.lives = 3;
   }
 
   // Methods
@@ -34,7 +32,7 @@ export default class Game {
 
     let bricks = buildLevel(this, level1);
 
-    this.gameObjects = [/*this.ball,*/ this.ship, ...bricks];
+    this.gameObjects = [this.ship, ...bricks];
 
     this.gamestate = GAMESTATE.RUNNING;
   }
@@ -51,9 +49,17 @@ export default class Game {
     // Call update for each object
     this.gameObjects.forEach((object) => object.update(deltaTime));
     // Filter the not marked for deletion
-    this.gameObjects = this.gameObjects.filter(
-      (object) => !object.markForDeletion
-    );
+    // this.gameObjects = this.gameObjects.filter(
+    //   (object) => !object.markForDeletion
+    // );
+
+    this.gameObjects.forEach((object) => {
+      if (object.markForDeletion) {
+        object.width -= 20;
+        object.height -= 20;
+        object.markForDeletion = false;
+      }
+    });
   }
 
   draw(ctx) {

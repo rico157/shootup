@@ -2,12 +2,17 @@ import Bullet from "./bullet.js";
 export default class Ship {
   constructor(game) {
     this.image = document.getElementById("img_ship");
+    this.shootSound = document.getElementById("shootSound");
 
     this.gameWidth = game.gameWidth;
     this.game = game;
     // this.size = 150;
     // this.height = 30;
     // Speed
+
+    this.width = 50;
+    this.height = 50;
+
     this.maxSpeed = 7;
     this.speed = 0;
     // Set x, y positions
@@ -17,10 +22,14 @@ export default class Ship {
       y: game.gameHeight - this.size - 35,
     };
     this.bullet = new Bullet(this);
+    this.been = true;
   }
 
   // Methods
+
   shoot() {
+    this.shootSound.currentTime = 0;
+    this.shootSound.play();
     this.bullet = new Bullet(this);
     this.game.gameObjects.push(this.bullet);
     this.game.bullets.push(this.bullet);

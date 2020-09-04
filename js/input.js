@@ -2,6 +2,10 @@ import Ship from "./ship.js";
 import Game from "./game.js";
 export default class InputHandler {
   constructor(ship, game) {
+    //Audio
+    const shootSound = document.getElementById("shootSound");
+
+    //Controls
     document.addEventListener(
       "touchstart",
       function (e) {
@@ -69,6 +73,10 @@ export default class InputHandler {
         case 39:
           ship.moveRight();
           break;
+        case 32:
+          ship.shoot();
+
+          break;
       }
     });
     document.addEventListener("keyup", (event) => {
@@ -83,7 +91,6 @@ export default class InputHandler {
           break;
         // Pause
         case 32:
-          ship.shoot();
           break;
       }
     });
