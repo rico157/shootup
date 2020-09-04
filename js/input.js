@@ -2,6 +2,14 @@ import Ship from "./ship.js";
 import Game from "./game.js";
 export default class InputHandler {
   constructor(ship, game) {
+    // Block touchscreen
+    document.addEventListener(
+      "touchstart",
+      function (e) {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
     //Audio
     this.shootSound = document.getElementById("shootSound");
     shootSound.volume = 0.2;
