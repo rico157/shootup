@@ -29,6 +29,7 @@ export default class InputHandler {
       .getElementById("startButton")
       .addEventListener("touchstart", () => {
         game.start();
+        ship.shoot();
       });
 
     // LEFT RIGHT BUTTONS
